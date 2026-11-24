@@ -1,0 +1,26 @@
+{
+  "name": "online-result-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Online Result / Report-Card Generation Portal - DBMS capstone (React + Express + MySQL + optional MongoDB)",
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c blue,magenta \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w frontend",
+    "start": "npm run start -w backend",
+    "db:setup": "node backend/scripts/setup-db.js",
+    "db:security": "node backend/scripts/setup-db.js --security",
+    "db:benchmark": "node backend/scripts/benchmark.js",
+    "test:db": "node backend/scripts/api-test.js",
+    "db:setup:empty": "node backend/scripts/setup-db.js --no-seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
